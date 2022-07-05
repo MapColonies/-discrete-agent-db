@@ -68,6 +68,7 @@ describe('LayerHistory', function () {
 
       const response = await requestSender.getHistory(historyIdentifier);
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.OK);
       expect(response.body).toEqual(inProgressHistoryResponse);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -84,6 +85,7 @@ describe('LayerHistory', function () {
         status: ProgressStatus.TRIGGERED,
       });
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.OK);
       expect(response.body).toEqual(triggeredHistoryResponse);
       expect(saveMock).toHaveBeenCalledTimes(1);
@@ -98,6 +100,7 @@ describe('LayerHistory', function () {
 
       const response = await requestSender.createHistory(historyIdentifier);
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.CREATED);
       expect(response.body).toEqual(inProgressHistoryResponse);
       expect(saveMock).toHaveBeenCalledTimes(1);
@@ -114,6 +117,7 @@ describe('LayerHistory', function () {
         status: 'invalid state',
       });
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.BAD_REQUEST);
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(findOneMock).toHaveBeenCalledTimes(0);
@@ -126,6 +130,7 @@ describe('LayerHistory', function () {
       findOneMock.mockResolvedValue(undefined);
       const response = await requestSender.getHistory(historyIdentifier);
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.NOT_FOUND);
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -138,6 +143,7 @@ describe('LayerHistory', function () {
         status: ProgressStatus.TRIGGERED,
       });
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.NOT_FOUND);
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -148,6 +154,7 @@ describe('LayerHistory', function () {
       findOneMock.mockResolvedValue(inProgressHistoryRecord);
       const response = await requestSender.createHistory(historyIdentifier);
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.CONFLICT);
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -159,6 +166,7 @@ describe('LayerHistory', function () {
 
       const response = await requestSender.getHistory(historyIdentifier);
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.INTERNAL_SERVER_ERROR);
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -172,6 +180,7 @@ describe('LayerHistory', function () {
         status: ProgressStatus.TRIGGERED,
       });
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.INTERNAL_SERVER_ERROR);
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -186,6 +195,7 @@ describe('LayerHistory', function () {
         status: ProgressStatus.TRIGGERED,
       });
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.INTERNAL_SERVER_ERROR);
       expect(saveMock).toHaveBeenCalledTimes(1);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -197,6 +207,7 @@ describe('LayerHistory', function () {
 
       const response = await requestSender.createHistory(historyIdentifier);
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.INTERNAL_SERVER_ERROR);
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(findOneMock).toHaveBeenCalledTimes(1);
@@ -209,6 +220,7 @@ describe('LayerHistory', function () {
 
       const response = await requestSender.createHistory(historyIdentifier);
 
+      expect(response).toSatisfyApiSpec();
       expect(response.status).toBe(httpStatusCodes.INTERNAL_SERVER_ERROR);
       expect(saveMock).toHaveBeenCalledTimes(1);
       expect(findOneMock).toHaveBeenCalledTimes(1);

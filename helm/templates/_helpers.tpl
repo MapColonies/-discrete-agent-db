@@ -81,7 +81,7 @@ Returns the cloud provider docker registry url from global if exists or from the
 {{- else -}}
 {{- end -}}
 {{- end -}}
-
+{{/* 
 Returns the cloud provider image pull secret name from global if exists or from the chart's values
 */}}
 {{- define "discrete-agent-db.cloudProviderImagePullSecretName" -}}

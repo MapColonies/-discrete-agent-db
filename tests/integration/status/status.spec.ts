@@ -37,6 +37,7 @@ describe('Status', function () {
 
       const response = await requestSender.getStatus();
 
+      expect(response).toSatisfyApiSpec();
       expect(findOneMock).toHaveBeenCalledTimes(1);
       expect(findOneMock).toHaveBeenCalledWith({ key: SettingsKeys.IS_WATCHING });
       expect(response.status).toBe(httpStatusCodes.OK);
@@ -52,6 +53,7 @@ describe('Status', function () {
       };
       const response = await requestSender.updateStatus(statusReq);
 
+      expect(response).toSatisfyApiSpec();
       expect(saveMock).toHaveBeenCalledTimes(1);
       expect(saveMock).toHaveBeenCalledWith(watchingSetting);
       expect(response.status).toBe(httpStatusCodes.OK);
@@ -66,6 +68,7 @@ describe('Status', function () {
     it('update should return status code 400 on invalid request', async function () {
       const response = await requestSender.updateStatus({ invalid: 'data' } as unknown as IStatus);
 
+      expect(response).toSatisfyApiSpec();
       expect(saveMock).toHaveBeenCalledTimes(0);
       expect(response.status).toBe(httpStatusCodes.BAD_REQUEST);
     });
@@ -78,6 +81,7 @@ describe('Status', function () {
 
       const response = await requestSender.getStatus();
 
+      expect(response).toSatisfyApiSpec();
       expect(findOneMock).toHaveBeenCalledTimes(1);
       expect(response.status).toBe(httpStatusCodes.INTERNAL_SERVER_ERROR);
     });
@@ -90,6 +94,7 @@ describe('Status', function () {
 
       const response = await requestSender.updateStatus(statusReq);
 
+      expect(response).toSatisfyApiSpec();
       expect(saveMock).toHaveBeenCalledTimes(1);
       expect(response.status).toBe(httpStatusCodes.INTERNAL_SERVER_ERROR);
     });
