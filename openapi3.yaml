@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Discrete-agent-DB
   description: basic template for map colonies service
-  version: 1.0.0
+  version: 1.4.0
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
@@ -14,13 +14,13 @@ paths:
         - Status
       summary: gets the agent status
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/status'
-        500:
+        '500':
           description: InternalServerError
           content:
             application/json:
@@ -38,19 +38,19 @@ paths:
             schema:
               $ref: '#/components/schemas/status'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/status'
-        400:
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-        500:
+        '500':
           description: InternalServerError
           content:
             application/json:
@@ -65,19 +65,19 @@ paths:
       parameters:
         - $ref: '#/components/parameters/directoryParam'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/layerHistoryRecord'
-        404:
+        '404':
           description: Not Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-        500:
+        '500':
           description: InternalServerError
           content:
             application/json:
@@ -91,19 +91,19 @@ paths:
       parameters:
         - $ref: '#/components/parameters/directoryParam'
       responses:
-        201:
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/layerHistoryRecord'
-        409:
+        '409':
           description: Conflict
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-        500:
+        '500':
           description: InternalServerError
           content:
             application/json:
@@ -130,25 +130,25 @@ paths:
                 status:
                   $ref: '#/components/schemas/historyStatus'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/layerHistoryRecord'
-        400:
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-        404:
+        '404':
           description: Not Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-        500:
+        '500':
           description: InternalServerError
           content:
             application/json:
