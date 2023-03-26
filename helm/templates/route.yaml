@@ -2,17 +2,18 @@
 {{- $chartName := include "discrete-agent-db.name" . -}}
 {{- $cloudProviderFlavor := include "discrete-agent-db.cloudProviderFlavor" . -}}
 {{- if and (and (.Values.enabled) (eq $cloudProviderFlavor "openshift")) (.Values.route.enabled) -}}
+{{- $serviceName := include "service.fullname" . -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ $releaseName }}-{{ $chartName }}-route
+  name: {{ $releaseName }}-route
   annotations:
     haproxy.router.openshift.io/rewrite-target: /
 spec:
   path:  {{ .Values.route.path | default "/" }}
   to:
     kind: Service
-    name: {{ $releaseName }}-{{ $chartName }}
+    name: {{ $serviceName }}
   tls:
     termination: edge
 {{- end -}}
