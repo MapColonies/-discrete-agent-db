@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Discrete-agent-DB
   description: basic template for map colonies service
-  version: 1.4.1
+  version: 1.4.2
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
